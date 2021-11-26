@@ -41,6 +41,7 @@ class _billSplitterState extends State<billSplitter> {
                         'Total per person',
                         style: TextStyle(
                           fontSize: 30,
+                          fontWeight: FontWeight.bold,
                           color: Colors.purpleAccent,
                         ),
                       ),
@@ -48,13 +49,14 @@ class _billSplitterState extends State<billSplitter> {
                         "\$123",
                         style: TextStyle(
                           fontSize: 25,
+                          color: Colors.deepPurple,
                         ),
                       ),
                     ],
                   ),
                 ),
                 Container(
-                  margin: EdgeInsets.only(top: 20),
+                  margin: EdgeInsets.only(top: 60),
                   padding: EdgeInsets.all(12.0),
                   decoration: BoxDecoration(
                     color: Colors.transparent,
@@ -161,7 +163,6 @@ class _billSplitterState extends State<billSplitter> {
                         ],
                       ),
                       Row(
-                        
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Text(
@@ -171,14 +172,38 @@ class _billSplitterState extends State<billSplitter> {
                           Padding(
                             padding: const EdgeInsets.all(24.0),
                             child: Text(
-                              "\$34",
-                              style: TextStyle(color: Colors.purple,
-                              fontSize: 17,
-                              fontWeight: FontWeight.bold,
+                              "\$${calculateTotalTip(billAmount, personCounter, tipPercentage)}",
+                              style: TextStyle(
+                                color: Colors.purple,
+                                fontSize: 17,
+                                fontWeight: FontWeight.bold,
                               ),
-                              
                             ),
                           ),
+                        ],
+                      ),
+                      Column(
+                        children: [
+                          Text(
+                            "$tipPercentage%",
+                            style: TextStyle(
+                              color: Colors.purple,
+                              fontSize: 17,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                          Slider(
+                              min: 0,
+                              max: 100,
+                              activeColor: Colors.purple,
+                              inactiveColor: Colors.grey,
+                              divisions: 20,
+                              value: tipPercentage.toDouble(),
+                              onChanged: (double newValue) {
+                                setState(() {
+                                  tipPercentage = newValue.round();
+                                });
+                              })
                         ],
                       )
                     ],
@@ -186,5 +211,17 @@ class _billSplitterState extends State<billSplitter> {
                 )
               ],
             )));
+  }
+
+  calculateTotalPerPerson(double totalTip, double billAmount, int splitBy) {
+    var totalPerPerson = (totalTip + billAmount) / splitBy;
+  }
+
+  calculateTotalTip(double billAmount, int splitBy, int tipPercentage) {
+    int tip = 0;
+    if (billAmount < 0 || billAmount.toString().isEmpty || billAmount == null) {
+    } else {
+      double totalTip = (billAmount + tipPercentage) / 100;
+    }
   }
 }
