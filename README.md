@@ -1,6 +1,9 @@
 # tip_generator
 
 This is a single screen clean UI based tip calculator application which can be used to calculate tips and split it equally with other people.
+![Screenshot (148)](https://user-images.githubusercontent.com/65835480/143667359-6466892b-380d-405b-b383-d20df854f79c.png)
+![Screenshot (149)](https://user-images.githubusercontent.com/65835480/143667369-4d6a3dc2-28c2-4fcc-918f-5149aeed815c.png)
+
 
 ## Getting Started
 
