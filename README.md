@@ -1,6 +1,6 @@
 # tip_generator
 
-A new Flutter project.
+This is a single screen clean UI based tip calculator application which can be used to calculate tips and split it equally with other people.
 
 ## Getting Started
 
